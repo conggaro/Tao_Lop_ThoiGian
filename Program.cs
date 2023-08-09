@@ -29,6 +29,38 @@ namespace MyApp
             giay = data_giay;
         }
 
+        // nạp chồng hàm khởi tạo có tham số
+        // ví dụ bạn nhập "01/01/2023"
+        // thì nó sẽ tự động nhận dạng cho bạn
+        public ThoiGian(string str)
+        {
+            if (str.Contains("/") == true)
+            {
+                // nếu chuỗi string có định dạng "dd/MM/yyyy"
+                // chuyển string sang mảng
+                string[] arr = str.Split("/");
+
+                ngay = Convert.ToInt32(arr[0]);
+                thang = Convert.ToInt32(arr[1]);
+                nam = Convert.ToInt32(arr[2]);
+            }
+            else if (str.Contains("-") == true)
+            {
+                // nếu chuỗi string có định dạng "yyyy-MM-dd"
+                // chuyển string sang mảng
+                string[] arr = str.Split("-");
+
+                nam = Convert.ToInt32(arr[0]);
+                thang = Convert.ToInt32(arr[1]);
+                ngay = Convert.ToInt32(arr[2]);
+            }
+
+            // giờ, phút, giây thì tự động bằng 0
+            gio = 0;
+            phut = 0;
+            giay = 0;
+        }
+
         // nạp chồng phương thức ToString
         public string ToString(string dinh_dang = "")
         {
@@ -413,6 +445,12 @@ namespace MyApp
             ThoiGian dt23 = new ThoiGian(5, 12, 2021, 9, 20, 48);
             ThoiGian hieu2 = dt23 - 1;
             Console.WriteLine($"{dt23.ToString("dd/MM/yyyy hh:mm:ss")}    -    {"1 (giay)",-15} =    {hieu2.ToString("dd/MM/yyyy hh:mm:ss")}");
+
+
+            // định dạng thời gian
+            // ngay từ lúc khởi tạo
+            ThoiGian thoiGian = new ThoiGian("2007-05-19");
+            Console.WriteLine($"\n\nNeu ban nhap:\t\"2007-05-19\"\nKet qua:\t{thoiGian.ToString()}");
         }
     }
 }
