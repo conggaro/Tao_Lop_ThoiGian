@@ -34,21 +34,21 @@ namespace MyApp
         // thì nó sẽ tự động nhận dạng cho bạn
         public ThoiGian(string str)
         {
-            if (str.Contains("/") == true)
+            if (str.Contains('/') == true)
             {
                 // nếu chuỗi string có định dạng "dd/MM/yyyy"
                 // chuyển string sang mảng
-                string[] arr = str.Split("/");
+                string[] arr = str.Split('/');
 
                 ngay = Convert.ToInt32(arr[0]);
                 thang = Convert.ToInt32(arr[1]);
                 nam = Convert.ToInt32(arr[2]);
             }
-            else if (str.Contains("-") == true)
+            else if (str.Contains('-') == true)
             {
                 // nếu chuỗi string có định dạng "yyyy-MM-dd"
                 // chuyển string sang mảng
-                string[] arr = str.Split("-");
+                string[] arr = str.Split('-');
 
                 nam = Convert.ToInt32(arr[0]);
                 thang = Convert.ToInt32(arr[1]);
